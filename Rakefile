@@ -157,13 +157,12 @@ task :lastUpdated do
       plugin_url = plugin['owner'] + "/" + plugin['name']
       begin
         repo = client.repo(plugin_url)
-        user = client.user(plugin['owner'])
+        # user = client.user(plugin['owner'])
         # puts "— Plugin was updated at #{repo.pushed_at}"
         plugin['lastUpdated'] = repo.pushed_at
       rescue Exception => e
         puts e
-        puts "https://github.com/#{plugin['owner']}/#{plugin['name']}" 
-        puts "— Repo not available"
+        puts "https://github.com/#{plugin['owner']}/#{plugin['name']}"
       end
 
       # if plugin['name'] == plugin['title'] && plugin['title'] == nil
@@ -546,7 +545,7 @@ task :stars do
   #   f.write(JSON.pretty_generate(json_data, :indent => "  "))
   # end
 
-  
+
 end
 
 desc "Default: generate README.md from plugin"
